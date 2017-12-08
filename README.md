@@ -1,4 +1,4 @@
-SBT Liquibase plugin for sbt 0.13.7+
+SBT Liquibase plugin for sbt 0.13.16 and 1.0.x
 ====================================
 
 # Code Climate
@@ -9,25 +9,20 @@ SBT Liquibase plugin for sbt 0.13.7+
 
 Add the following to your `project/plugins.sbt`:
 
-## sbt-0.13.7+
+## sbt-(0.13.16 / 1.0.x)
 
-    addSbtPlugin("com.github.sbtliquibase" % "sbt-liquibase" % "0.2.0")
+    addSbtPlugin("com.permutive" % "sbt-liquibase" % "1.0.0")
 
 ### Step 2: Activate sbt-liquibase-plugin in your build
 
 Add the following to your 'build.sbt' ( if you are using build.sbt )
 
 
-    import com.github.sbtliquibase.SbtLiquibase
-    
+    import com.permutive.sbtliquibase.SbtLiquibase
     enablePlugins(SbtLiquibase)
-    
     liquibaseUsername := ""
-
     liquibasePassword := ""
-
     liquibaseDriver   := "com.mysql.jdbc.Driver"
-
     liquibaseUrl      := "jdbc:mysql://localhost:3306/test_db?createDatabaseIfNotExist=true"
 
 ## Settings

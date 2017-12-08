@@ -1,6 +1,5 @@
 import java.sql.{Connection, DriverManager}
-
-import com.github.sbtliquibase.SbtLiquibase
+import com.permutive.sbtliquibase.SbtLiquibase
 
 lazy val multipleTasks = taskKey[Unit]("Check multiple tasks running")
 

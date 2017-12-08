@@ -1,30 +1,44 @@
+import ReleaseTransformations._
 
-sbtPlugin := true
+lazy val buildSettings = Seq(
+  organization := "com.permutive",
+  organizationName := "Permutive Inc.",
+  organizationHomepage := Some(new URL("https://permutive.com")),
+  publishArtifact in Test := false,
+  sbtPlugin := true,
+  scalacOptions ++= Seq("-encoding", "UTF-8", "-deprecation", "-unchecked"),
+  scriptedBufferLog := false,
+  scriptedLaunchOpts := {
+    scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
+  },
+  crossSbtVersions := Vector("1.0.4", "0.13.16"),
+  releaseCrossBuild := true,
+  releaseTagName := {
+    (version in ThisBuild).value
+  },
+  releaseProcess := Seq[ReleaseStep](
+    checkSnapshotDependencies,
+    inquireVersions,
+    runClean,
+    runTest,
+    setReleaseVersion,
+    commitReleaseVersion,
+    tagRelease,
+    releaseStepCommand("publishSigned"),
+    setNextVersion,
+    commitNextVersion,
+    releaseStepCommand("sonatypeReleaseAll"),
+    pushChanges
+  ),
 
-organization := "com.github.sbtliquibase"
+)
 
-name := "sbt-liquibase"
-
-version := "0.2.0"
-
-licenses := Seq("Apache License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
-
-homepage := Some(url("https://github.com/sbtliquibase/sbt-liquibase-plugin"))
-
-crossScalaVersions := Seq("2.10.4")
-
-libraryDependencies += "org.liquibase" % "liquibase-core" % "3.5.3"
-
-publishMavenStyle := true
-
-scriptedSettings
-
-//scriptedLaunchOpts <+= version apply { v => "-Dproject.version="+v }
-
-scriptedLaunchOpts := { scriptedLaunchOpts.value ++
-  Seq("-Xmx1024M", "-XX:MaxPermSize=256M", "-Dplugin.version=" + version.value)
-}
-
-scriptedBufferLog := false
-
-// TODO publish to Sonatype OSS
+lazy val sbtLiquibase = Project(
+  id = "sbt-liquibase",
+  base = file(".")
+)
+  .enablePlugins(ScriptedPlugin)
+  .settings(buildSettings)
+  .settings(
+    libraryDependencies += "org.liquibase" % "liquibase-core" % "3.5.3",
+  )
