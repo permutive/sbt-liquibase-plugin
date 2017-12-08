@@ -11,6 +11,8 @@ lazy val buildSettings = Seq(
   scriptedLaunchOpts := {
     scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
   },
+  scalaVersion := "2.12.4",
+  crossScalaVersions := Vector("2.11.11", "2.12.4"),
   crossSbtVersions := Vector("1.0.4", "0.13.16"),
   releaseCrossBuild := true,
   releaseTagName := {
