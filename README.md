@@ -11,7 +11,7 @@ Add the following to your `project/plugins.sbt`:
 
 ## sbt-(0.13.16 / 1.0.x)
 
-    addSbtPlugin("com.permutive" % "sbt-liquibase" % "1.0.0")
+    addSbtPlugin("com.permutive" % "sbt-liquibase" % "1.1.0")
 
 ### Step 2: Activate sbt-liquibase-plugin in your build
 
