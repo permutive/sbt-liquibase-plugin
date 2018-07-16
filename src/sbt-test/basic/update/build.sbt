@@ -1,5 +1,4 @@
 import java.sql.{Connection, DriverManager}
-import com.permutive.sbtliquibase.SbtLiquibase
 
 lazy val multipleTasks = taskKey[Unit]("Check multiple tasks running")
 
@@ -22,7 +21,7 @@ lazy val test = (project in file("."))
 
     multipleTasks := {},
 
-    multipleTasks <<= multipleTasks.dependsOn(Def.sequential(
+    multipleTasks := multipleTasks.dependsOn(Def.sequential(
       liquibaseDropAll,
       liquibaseUpdate
     ))

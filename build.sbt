@@ -42,5 +42,5 @@ lazy val sbtLiquibase = Project(
   .enablePlugins(ScriptedPlugin)
   .settings(buildSettings)
   .settings(
-    libraryDependencies += "org.liquibase" % "liquibase-core" % "3.5.3",
+    libraryDependencies += "org.liquibase" % "liquibase-core" % "3.6.1"
   )

@@ -13,10 +13,10 @@
          |Specify this property using the scriptedLaunchOpts -D.""".stripMargin)
   }
 
-  else addSbtPlugin("com.github.sbtliquibase" % "sbt-liquibase" % pluginVersion)
+  else addSbtPlugin("com.permutive" % "sbt-liquibase" % pluginVersion)
 }
 
 libraryDependencies ++= Seq(
   "com.h2database" % "h2" % "1.4.182",
-  "org.liquibase" % "liquibase-core" % "3.5.3"
+  "org.liquibase" % "liquibase-core" % "3.6.1"
 )
