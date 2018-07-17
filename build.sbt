@@ -27,9 +27,9 @@ lazy val buildSettings = Seq(
     commitReleaseVersion,
     tagRelease,
     releaseStepCommand("^publishSigned"),
+    releaseStepCommand("sonatypeReleaseAll"),
     setNextVersion,
     commitNextVersion,
-    releaseStepCommand("sonatypeReleaseAll"),
     pushChanges
   ),
 
