@@ -11,8 +11,8 @@ lazy val buildSettings = Seq(
   scriptedLaunchOpts := {
     scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
   },
-  scalaVersion := "2.12.4",
-  crossSbtVersions := Vector("1.1.6", "0.13.16"),
+  scalaVersion := "2.12.10",
+  crossSbtVersions := Vector("1.3.0", "0.13.16"),
   releaseCrossBuild := true,
   releaseTagName := {
     (version in ThisBuild).value
@@ -42,5 +42,5 @@ lazy val sbtLiquibase = Project(
   .enablePlugins(ScriptedPlugin)
   .settings(buildSettings)
   .settings(
-    libraryDependencies += "org.liquibase" % "liquibase-core" % "3.6.1"
+    libraryDependencies += "org.liquibase" % "liquibase-core" % "3.8.0"
   )
