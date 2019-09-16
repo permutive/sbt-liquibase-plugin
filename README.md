@@ -6,7 +6,7 @@ SBT Liquibase plugin for SBT 1
 
 Add the following to your `project/plugins.sbt`:
 
-    addSbtPlugin("com.permutive" % "sbt-liquibase" % "1.1.0")
+    addSbtPlugin("com.permutive" % "sbt-liquibase" % "1.2.0")
 
 ### Step 2: Activate sbt-liquibase-plugin in your build
 
