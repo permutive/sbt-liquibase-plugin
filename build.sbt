@@ -12,7 +12,7 @@ lazy val buildSettings = Seq(
     scriptedLaunchOpts.value ++ Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
   },
   scalaVersion := "2.12.10",
-  crossSbtVersions := Vector("1.3.0", "0.13.16"),
+  crossSbtVersions := Vector("0.13.16"),
   releaseCrossBuild := true,
   releaseTagName := {
     (version in ThisBuild).value
@@ -47,7 +47,7 @@ lazy val buildSettings = Seq(
     setReleaseVersion,
     commitReleaseVersion,
     tagRelease,
-    publishArtifacts,
+    releaseStepCommand("^publishSigned"),
     releaseStepCommand("sonatypeReleaseAll"),
     setNextVersion,
     commitNextVersion,
